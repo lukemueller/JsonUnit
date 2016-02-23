@@ -1,39 +1,28 @@
 /**
  * Copyright 2009-2015 the original author or authors.
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.javacrumbs.jsonunit.test.base;
+package net.javacrumbs.jsonunit;
 
-import net.javacrumbs.jsonunit.JsonAssert;
 import org.junit.After;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.io.StringReader;
 
-import static net.javacrumbs.jsonunit.JsonAssert.assertJsonEquals;
-import static net.javacrumbs.jsonunit.JsonAssert.assertJsonNodeAbsent;
-import static net.javacrumbs.jsonunit.JsonAssert.assertJsonNodePresent;
-import static net.javacrumbs.jsonunit.JsonAssert.assertJsonNotEquals;
-import static net.javacrumbs.jsonunit.JsonAssert.assertJsonPartEquals;
-import static net.javacrumbs.jsonunit.JsonAssert.assertJsonPartNotEquals;
-import static net.javacrumbs.jsonunit.JsonAssert.assertJsonPartStructureEquals;
-import static net.javacrumbs.jsonunit.JsonAssert.assertJsonStructureEquals;
-import static net.javacrumbs.jsonunit.core.Option.IGNORING_ARRAY_ORDER;
-import static net.javacrumbs.jsonunit.core.Option.IGNORING_EXTRA_FIELDS;
-import static net.javacrumbs.jsonunit.core.Option.IGNORING_VALUES;
-import static net.javacrumbs.jsonunit.core.Option.TREATING_NULL_AS_ABSENT;
+import static net.javacrumbs.jsonunit.JsonAssert.*;
+import static net.javacrumbs.jsonunit.core.Option.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -129,7 +118,7 @@ public abstract class AbstractJsonAssertTest {
             fail("Exception expected");
         } catch (AssertionError e) {
             assertEquals("JSON documents are different:\n" +
-                    "Different value found in node \"\". Expected 1, got 1.0.\n", e.getMessage());
+                "Different value found in node \"\". Expected 1, got 1.0.\n", e.getMessage());
         }
     }
 
@@ -158,7 +147,7 @@ public abstract class AbstractJsonAssertTest {
             fail("Exception expected");
         } catch (AssertionError e) {
             assertEquals("JSON documents are different:\n" +
-                    "Different value found in node \"\". Expected 1, got 1.1, difference is 0.1, tolerance is 0.01\n", e.getMessage());
+                "Different value found in node \"\". Expected 1, got 1.1, difference is 0.1, tolerance is 0.01\n", e.getMessage());
         }
     }
 
@@ -270,7 +259,7 @@ public abstract class AbstractJsonAssertTest {
     @Test
     public void testComplexOk() {
         assertJsonEquals("{\"test\":[1, 2, {\"child\":{\"value1\":1, \"value2\":true, \"value3\": \"test\", \"value4\":{\"leaf\":5}}}], \"root2\": false}",
-                "{\"test\":[1, 2, {\"child\":{\"value1\":1, \"value2\":true, \"value3\": \"test\", \"value4\":{\"leaf\":5}}}], \"root2\": false}");
+            "{\"test\":[1, 2, {\"child\":{\"value1\":1, \"value2\":true, \"value3\": \"test\", \"value4\":{\"leaf\":5}}}], \"root2\": false}");
 
     }
 
@@ -278,56 +267,56 @@ public abstract class AbstractJsonAssertTest {
     public void testComplexErrors() {
         try {
             assertJsonEquals("{\n" +
-                            "   \"test\":[\n" +
-                            "      1,\n" +
-                            "      2,\n" +
-                            "      {\n" +
-                            "         \"child\":{\n" +
-                            "            \"value1\":1,\n" +
-                            "            \"value2\":true,\n" +
-                            "            \"value3\":\"test\",\n" +
-                            "            \"value4\":{\n" +
-                            "               \"leaf\":5\n" +
-                            "            }\n" +
-                            "         }\n" +
-                            "      }\n" +
-                            "   ],\n" +
-                            "   \"root2\":false,\n" +
-                            "   \"root3\":1\n" +
-                            "}",
-                    "{\n" +
-                            "   \"test\":[\n" +
-                            "      5,\n" +
-                            "      false,\n" +
-                            "      {\n" +
-                            "         \"child\":{\n" +
-                            "            \"value1\":5,\n" +
-                            "            \"value2\":\"true\",\n" +
-                            "            \"value3\":\"test\",\n" +
-                            "            \"value4\":{\n" +
-                            "               \"leaf2\":5\n" +
-                            "            }\n" +
-                            "         },\n" +
-                            "         \"child2\":{\n" +
-                            "\n" +
-                            "         }\n" +
-                            "      }\n" +
-                            "   ],\n" +
-                            "   \"root4\":\"bar\"\n" +
-                            "}"
+                    "   \"test\":[\n" +
+                    "      1,\n" +
+                    "      2,\n" +
+                    "      {\n" +
+                    "         \"child\":{\n" +
+                    "            \"value1\":1,\n" +
+                    "            \"value2\":true,\n" +
+                    "            \"value3\":\"test\",\n" +
+                    "            \"value4\":{\n" +
+                    "               \"leaf\":5\n" +
+                    "            }\n" +
+                    "         }\n" +
+                    "      }\n" +
+                    "   ],\n" +
+                    "   \"root2\":false,\n" +
+                    "   \"root3\":1\n" +
+                    "}",
+                "{\n" +
+                    "   \"test\":[\n" +
+                    "      5,\n" +
+                    "      false,\n" +
+                    "      {\n" +
+                    "         \"child\":{\n" +
+                    "            \"value1\":5,\n" +
+                    "            \"value2\":\"true\",\n" +
+                    "            \"value3\":\"test\",\n" +
+                    "            \"value4\":{\n" +
+                    "               \"leaf2\":5\n" +
+                    "            }\n" +
+                    "         },\n" +
+                    "         \"child2\":{\n" +
+                    "\n" +
+                    "         }\n" +
+                    "      }\n" +
+                    "   ],\n" +
+                    "   \"root4\":\"bar\"\n" +
+                    "}"
             );
             fail("Exception expected");
         } catch (AssertionError e) {
             assertEquals(
-                    "JSON documents are different:\n" +
-                            "Different keys found in node \"\". Expected [root2, root3, test], got [root4, test]. Missing: \"root2\",\"root3\" Extra: \"root4\"\n" +
-                            "Different value found in node \"test[0]\". Expected 1, got 5.\n" +
-                            "Different value found in node \"test[1]\". Expected '2', got 'false'.\n" +
-                            "Different keys found in node \"test[2]\". Expected [child], got [child, child2].  Extra: \"test[2].child2\"\n" +
-                            "Different value found in node \"test[2].child.value1\". Expected 1, got 5.\n" +
-                            "Different value found in node \"test[2].child.value2\". Expected 'true', got '\"true\"'.\n" +
-                            "Different keys found in node \"test[2].child.value4\". Expected [leaf], got [leaf2]. Missing: \"test[2].child.value4.leaf\" Extra: \"test[2].child.value4.leaf2\"\n"
-                    , e.getMessage()
+                "JSON documents are different:\n" +
+                    "Different keys found in node \"\". Expected [root2, root3, test], got [root4, test]. Missing: \"root2\",\"root3\" Extra: \"root4\"\n" +
+                    "Different value found in node \"test[0]\". Expected 1, got 5.\n" +
+                    "Different value found in node \"test[1]\". Expected '2', got 'false'.\n" +
+                    "Different keys found in node \"test[2]\". Expected [child], got [child, child2].  Extra: \"test[2].child2\"\n" +
+                    "Different value found in node \"test[2].child.value1\". Expected 1, got 5.\n" +
+                    "Different value found in node \"test[2].child.value2\". Expected 'true', got '\"true\"'.\n" +
+                    "Different keys found in node \"test[2].child.value4\". Expected [leaf], got [leaf2]. Missing: \"test[2].child.value4.leaf\" Extra: \"test[2].child.value4.leaf2\"\n"
+                , e.getMessage()
             );
         }
 
@@ -508,41 +497,41 @@ public abstract class AbstractJsonAssertTest {
     @Test
     public void testComplexStructureOk() {
         assertJsonStructureEquals("{\n" +
-                        "   \"test\":[\n" +
-                        "      1,\n" +
-                        "      2,\n" +
-                        "      {\n" +
-                        "         \"child\":{\n" +
-                        "            \"value1\":1,\n" +
-                        "            \"value2\":true,\n" +
-                        "            \"value3\":\"test\",\n" +
-                        "            \"value4\":{\n" +
-                        "               \"leaf\":5\n" +
-                        "            }\n" +
-                        "         }\n" +
-                        "      }\n" +
-                        "   ],\n" +
-                        "   \"root2\":false,\n" +
-                        "   \"root3\":1\n" +
-                        "}",
-                "{\n" +
-                        "   \"test\":[\n" +
-                        "      4,\n" +
-                        "      5,\n" +
-                        "      {\n" +
-                        "         \"child\":{\n" +
-                        "            \"value1\":6,\n" +
-                        "            \"value2\":false,\n" +
-                        "            \"value3\":\"different\",\n" +
-                        "            \"value4\":{\n" +
-                        "               \"leaf\":6\n" +
-                        "            }\n" +
-                        "         }\n" +
-                        "      }\n" +
-                        "   ],\n" +
-                        "   \"root2\":true,\n" +
-                        "   \"root3\":2\n" +
-                        "}"
+                "   \"test\":[\n" +
+                "      1,\n" +
+                "      2,\n" +
+                "      {\n" +
+                "         \"child\":{\n" +
+                "            \"value1\":1,\n" +
+                "            \"value2\":true,\n" +
+                "            \"value3\":\"test\",\n" +
+                "            \"value4\":{\n" +
+                "               \"leaf\":5\n" +
+                "            }\n" +
+                "         }\n" +
+                "      }\n" +
+                "   ],\n" +
+                "   \"root2\":false,\n" +
+                "   \"root3\":1\n" +
+                "}",
+            "{\n" +
+                "   \"test\":[\n" +
+                "      4,\n" +
+                "      5,\n" +
+                "      {\n" +
+                "         \"child\":{\n" +
+                "            \"value1\":6,\n" +
+                "            \"value2\":false,\n" +
+                "            \"value3\":\"different\",\n" +
+                "            \"value4\":{\n" +
+                "               \"leaf\":6\n" +
+                "            }\n" +
+                "         }\n" +
+                "      }\n" +
+                "   ],\n" +
+                "   \"root2\":true,\n" +
+                "   \"root3\":2\n" +
+                "}"
         );
     }
 
@@ -629,7 +618,7 @@ public abstract class AbstractJsonAssertTest {
             fail("Exception expected");
         } catch (AssertionError e) {
             assertEquals("JSON documents are different:\n" +
-                    "Array \"test\" has different content. Missing values [1], extra values [4]\n", e.getMessage());
+                "Array \"test\" has different content. Missing values [1], extra values [4]\n", e.getMessage());
         }
     }
 
@@ -641,7 +630,7 @@ public abstract class AbstractJsonAssertTest {
             fail("Exception expected");
         } catch (AssertionError e) {
             assertEquals("JSON documents are different:\n" +
-                    "Array \"test\" has different content. Missing values [{\"key\":1}], extra values [{\"key\":4}]\n", e.getMessage());
+                "Array \"test\" has different content. Missing values [{\"key\":1}], extra values [{\"key\":4}]\n", e.getMessage());
         }
     }
 
@@ -670,7 +659,7 @@ public abstract class AbstractJsonAssertTest {
             assertJsonEquals("{\"test\":[{\"a\":1},{\"b\":2},{\"c\":3}]}", "{\"test\":[{\"a\":3},{\"b\":2},{\"c\":1}]}");
         } catch (AssertionError e) {
             assertEquals("JSON documents are different:\n" +
-                    "Different value found in node \"test[1].b\". Expected '2', got '\"2\"'.\n", e.getMessage());
+                "Different value found in node \"test[1].b\". Expected '2', got '\"2\"'.\n", e.getMessage());
         }
     }
 
@@ -681,7 +670,7 @@ public abstract class AbstractJsonAssertTest {
             assertJsonEquals("{\"test\":{\"a\":1,\"b\":2,\"c\":3}}", "{\"test\":{\"a\":3,\"b\":\"2\",\"c\":1}}");
         } catch (AssertionError e) {
             assertEquals("JSON documents are different:\n" +
-                    "Different value found in node \"test.b\". Expected '2', got '\"2\"'.\n", e.getMessage());
+                "Different value found in node \"test.b\". Expected '2', got '\"2\"'.\n", e.getMessage());
         }
     }
 
@@ -692,7 +681,7 @@ public abstract class AbstractJsonAssertTest {
             assertJsonEquals("{\"test\":[{\"a\":1},{\"b\":2},{\"c\":3}]}", "{\"test\":[{\"a\":1},{\"b\":\"2\"},{\"c\":3}]}");
         } catch (AssertionError e) {
             assertEquals("JSON documents are different:\n" +
-                    "Different value found in node \"test[1].b\". Expected '2', got '\"2\"'.\n", e.getMessage());
+                "Different value found in node \"test[1].b\". Expected '2', got '\"2\"'.\n", e.getMessage());
         }
     }
 

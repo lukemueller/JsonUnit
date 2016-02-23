@@ -123,7 +123,7 @@ public class JsonAssert {
      * Compares structures of two JSON documents.
      * Throws {@link AssertionError} if they are different.
      */
-    public static void assertJsonStructureEquals(Object expected, Object actual) {
+    protected static void assertJsonStructureEquals(Object expected, Object actual) {
         Diff diff = create(expected, actual, ACTUAL, ROOT, configuration.withOptions(COMPARING_ONLY_STRUCTURE));
         if (!diff.similar()) {
             doFail(diff.differences());

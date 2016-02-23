@@ -1,22 +1,20 @@
 /**
  * Copyright 2009-2015 the original author or authors.
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.javacrumbs.jsonunit.test.all;
+package net.javacrumbs.jsonunit;
 
-import net.javacrumbs.jsonunit.JsonAssert;
-import net.javacrumbs.jsonunit.test.base.AbstractJsonAssertTest;
 import net.javacrumbs.jsonunit.test.base.JsonTestUtils;
 import net.javacrumbs.jsonunit.test.base.beans.Jackson1Bean;
 import net.javacrumbs.jsonunit.test.base.beans.Jackson1IgnorepropertyBean;
@@ -24,13 +22,9 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static net.javacrumbs.jsonunit.JsonAssert.assertJsonEquals;
-import static net.javacrumbs.jsonunit.JsonAssert.assertJsonStructureEquals;
-import static net.javacrumbs.jsonunit.JsonAssert.when;
+import static net.javacrumbs.jsonunit.JsonAssert.*;
 import static net.javacrumbs.jsonunit.core.Option.IGNORING_VALUES;
-import static net.javacrumbs.jsonunit.test.base.JsonTestUtils.readByGson;
-import static net.javacrumbs.jsonunit.test.base.JsonTestUtils.readByJackson1;
-import static net.javacrumbs.jsonunit.test.base.JsonTestUtils.readByJackson2;
+import static net.javacrumbs.jsonunit.test.base.JsonTestUtils.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -123,7 +117,7 @@ public class AllJsonAssertTest extends AbstractJsonAssertTest {
             failIfNoException();
         } catch (AssertionError e) {
             assertEquals("JSON documents are different:\n" +
-                    "Different value found in node \"test\". Pattern \"[A-Z]+\" did not match \"123\".\n", e.getMessage());
+                "Different value found in node \"test\". Pattern \"[A-Z]+\" did not match \"123\".\n", e.getMessage());
         }
     }
 
@@ -134,7 +128,7 @@ public class AllJsonAssertTest extends AbstractJsonAssertTest {
             failIfNoException();
         } catch (AssertionError e) {
             assertEquals("JSON documents are different:\n" +
-                    "Different value found in node \"test\". Expected '\"${json-unit.regex}[A-Z]+\"', got 'null'.\n", e.getMessage());
+                "Different value found in node \"test\". Expected '\"${json-unit.regex}[A-Z]+\"', got 'null'.\n", e.getMessage());
         }
     }
 
@@ -145,7 +139,7 @@ public class AllJsonAssertTest extends AbstractJsonAssertTest {
             failIfNoException();
         } catch (AssertionError e) {
             assertEquals("JSON documents are different:\n" +
-                    "Different value found in node \"test\". Expected '\"${json-unit.regex}[A-Z]+\"', got '123'.\n", e.getMessage());
+                "Different value found in node \"test\". Expected '\"${json-unit.regex}[A-Z]+\"', got '123'.\n", e.getMessage());
         }
     }
 
@@ -156,7 +150,7 @@ public class AllJsonAssertTest extends AbstractJsonAssertTest {
             failIfNoException();
         } catch (AssertionError e) {
             assertEquals("JSON documents are different:\n" +
-                    "Different keys found in node \"\". Expected [test], got [test2]. Missing: \"test\" Extra: \"test2\"\n", e.getMessage());
+                "Different keys found in node \"\". Expected [test], got [test2]. Missing: \"test\" Extra: \"test2\"\n", e.getMessage());
         }
     }
 

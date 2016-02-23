@@ -15,7 +15,7 @@
  */
 package net.javacrumbs.jsonunit.test.jackson2;
 
-import net.javacrumbs.jsonunit.test.base.AbstractJsonAssertTest;
+import net.javacrumbs.jsonunit.AbstractJsonAssertTest;
 import net.javacrumbs.jsonunit.test.base.JsonTestUtils;
 
 public class Jackson1JsonAssertTest extends AbstractJsonAssertTest {
